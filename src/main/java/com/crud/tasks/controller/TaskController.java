@@ -23,7 +23,7 @@ public class TaskController {
     public void deleteTask(Long taskid) {
 
     }
-    @RequestMapping(method = RequestMethod.GET, value = "updateTask")
+    @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
     public TaskDto updateTask(Long taskid) {
         return new TaskDto(1L, "Edited test title", "Test content");
     }
