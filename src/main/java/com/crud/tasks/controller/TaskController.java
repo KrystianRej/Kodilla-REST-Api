@@ -13,7 +13,10 @@ import java.util.List;
 public class TaskController {
     @RequestMapping(method = RequestMethod.GET, value = "getTasks")
     public List<TaskDto> getTasks() {
-        return new ArrayList<>();
+        List<TaskDto> tasks = new ArrayList<>();
+        TaskDto taskDto = new TaskDto(1L, "test title", "test_content");
+        tasks.add(taskDto);
+        return tasks;
     }
     @RequestMapping(method = RequestMethod.GET, value = "getTask")
     public TaskDto getTask(Long taskid){
