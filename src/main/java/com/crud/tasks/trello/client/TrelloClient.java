@@ -1,5 +1,6 @@
 package com.crud.tasks.trello.client;
 
+
 import com.crud.tasks.domain.TrelloBoardDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,16 +9,16 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class TrelloClient {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${trello.api.endpoint.prod}}")
+    @Value("${trello.api.endpoint.prod}")
     private String trelloApiEndpoint;
 
     @Value("${trello.app.key}")
@@ -37,15 +38,13 @@ public class TrelloClient {
     }
 
 
-    public List<TrelloBoardDto> getTrelloBoards() {
+    public Optional<List<TrelloBoardDto>> getTrelloBoards() {
 
         URI url = getURLAdress();
+        System.out.println(url);
 
         TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
 
-        if (boardsResponse != null) {
-            return Arrays.asList(boardsResponse);
-        }
-        return new ArrayList<>();
+            return Optional.of(Arrays.asList(boardsResponse));
     }
 }

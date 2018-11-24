@@ -17,11 +17,14 @@ public class TrelloController {
     private TrelloClient trelloClient;
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
-    public void getTrelloBoards() {
+    public void getTrelloBoards() throws BoardNotFoundException{
 
-        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
+        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards().orElseThrow(BoardNotFoundException::new);
 
-        trelloBoards.forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
+        trelloBoards.stream()
+                .filter(n -> n.getName() != null && n.getId() != null)
+                .filter(n -> n.getName().contains("Kodilla"))
+                .forEach(n -> System.out.println(n.getId() + " " + n.getName()));
 
     }
 }
