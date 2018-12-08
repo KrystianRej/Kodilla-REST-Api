@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Required;
 
 @Getter
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class Mail {
 
     private String mailTo;
