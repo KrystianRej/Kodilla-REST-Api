@@ -2,8 +2,10 @@ package com.crud.tasks.mapper;
 
 import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
+import io.micrometer.core.instrument.Meter;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.GeneratedValue;
 import java.util.List;
 import java.util.stream.Collectors;
 

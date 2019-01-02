@@ -38,6 +38,9 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-mail:2.1.0.RELEASE'
 	compile('com.google.code.gson:gson:2.8.2')
 	compile('org.springframework.boot:spring-boot-starter-actuator')
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.1.1.RELEASE'
+
 
 	//providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
