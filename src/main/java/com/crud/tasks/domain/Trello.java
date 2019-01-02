@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Trello {
