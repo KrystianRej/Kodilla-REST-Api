@@ -23,13 +23,13 @@ public class EmailScheduler {
     private AdminConfig adminConfig;
 
     @Scheduled(cron = "0 0 10 * * *")
-    //@Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 10000)
     public void sendInformationEmail() {
         long size = taskRepository.count();
         if(size != 1) {
-            simpleEmailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, "Currenty in database you got: " + size + " tasks"));
+            simpleEmailService.dailyInfo(new Mail(adminConfig.getAdminMail(), SUBJECT, "Currenty in database you got: " + size + " tasks"));
         } else {
-            simpleEmailService.send(new Mail(adminConfig.getAdminMail(), SUBJECT, "Currenty in database you got: " + size + " task"));
+            simpleEmailService.dailyInfo(new Mail(adminConfig.getAdminMail(), SUBJECT, "Currenty in database you got: " + size + " task"));
         }
     }
 }
